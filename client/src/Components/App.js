@@ -48,8 +48,6 @@ const App = ({
   useEffect(() => {
     loadEmployees();
 
-    axios.get("/api/employees").then((res) => console.log(res.data));
-
     return () => {};
   }, []);
 
@@ -73,7 +71,10 @@ const App = ({
       }
       
       setModalOpen(false);
-      loadEmployees();
+
+      setTimeout(() => {
+        loadEmployees();
+      }, 500);
     }
   }
 
@@ -102,10 +103,10 @@ const App = ({
     setFormSubmitted(false);
 
     deleteEmployee(fieldState);
-
+    
     setTimeout(() => {
-      loadEmployees()
-    }, 500);
+      loadEmployees();
+    }, 1000);
   }
 
   const onCancelDelete = () => {
